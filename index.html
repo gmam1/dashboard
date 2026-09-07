@@ -87,6 +87,41 @@
             color: #222;
         }
 
+        /* Rules & Regulations Section & Button */
+        .rules-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .rules-card p {
+            color: #555;
+            font-size: 14px;
+        }
+
+        .rules-btn {
+            background-color: #0f172a;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        .rules-btn:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -168,6 +203,11 @@
                 gap: 10px;
             }
 
+            .rules-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
             .live-market-btn {
                 bottom: 15px;
                 right: 15px;
@@ -179,7 +219,6 @@
 </head>
 <body>
 
-    <!-- ================= HEADER ================= -->
     <div class="header">
         <div>
             <h1>ABC Technologies Ltd.</h1>
@@ -191,7 +230,6 @@
         </div>
     </div>
 
-    <!-- ================= SUMMARY CARDS ================= -->
     <div class="cards">
         <div class="card">
             <h3>Total Portfolio Value</h3>
@@ -218,7 +256,16 @@
         </div>
     </div>
 
-    <!-- ================= YOUR HOLDINGS ================= -->
+    <div class="section rules-card">
+        <div>
+            <h2>Governance & Compliance</h2>
+            <p>Review the full equity terms, share adjustment guidelines, and legal shareholder framework.</p>
+        </div>
+        <a href="https://rules-six-delta.vercel.app/" target="_blank" class="rules-btn">
+            Rules, Regulations & Policies ↗
+        </a>
+    </div>
+
     <div class="section">
         <h2>Your Holdings</h2>
         <table>
@@ -245,7 +292,6 @@
         </table>
     </div>
 
-    <!-- ================= DIVIDEND INFO ================= -->
     <div class="section">
         <h2>Dividend Information</h2>
         <table>
@@ -277,7 +323,6 @@
         </table>
     </div>
 
-    <!-- ================= COMPANY NEWS ================= -->
     <div class="section">
         <h2>Latest Company Updates</h2>
         <ul style="padding-left: 20px; line-height: 1.8;">
@@ -287,13 +332,11 @@
         </ul>
     </div>
 
-    <!-- ================= FOOTER ================= -->
     <div class="footer">
         This is a simple shareholder dashboard for personal use.<br>
         Please contact the company investor relations for official statements.
     </div>
 
-    <!-- ================= LIVE MARKET BUTTON ================= -->
     <a href="https://sharesvalue.vercel.app/" target="_blank" class="live-market-btn">
         <span class="live-dot"></span> Live Market
     </a>
