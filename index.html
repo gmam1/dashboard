@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shareholder Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f9;
+            color: #333;
+            padding: 20px;
+            padding-bottom: 80px; /* Space so fixed button doesn't cover footer content */
+        }
+
+        .header {
+            background: #1a73e8;
+            color: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header h1 {
+            font-size: 24px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            padding: 22px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 8px;
+        }
+
+        .card .value {
+            font-size: 26px;
+            font-weight: bold;
+            color: #1a73e8;
+        }
+
+        .card .change {
+            font-size: 14px;
+            margin-top: 6px;
+        }
+
+        .positive { color: #0a8a0a; }
+        .negative { color: #d93025; }
+
+        .section {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 25px;
+        }
+
+        .section h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 12px 10px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #555;
+        }
+
+        .footer {
+            text-align: center;
+            color: #888;
+            font-size: 13px;
+            margin-top: 30px;
+        }
+
+        /* Fixed Live Market Button */
+        .live-market-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+            background-color: #22c55e;
+            color: #ffffff;
+            font-size: 15px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 12px 22px;
+            border-radius: 30px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        /* Live dot animation inside button */
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ffffff;
+            border-radius: 50%;
+            display: inline-block;
+            box-shadow: 0 0 0 rgba(255, 255, 255, 0.7);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 8px rgba(255, 255, 255, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
+            }
+        }
+
+        .live-market-btn:hover {
+            background-color: #16a34a;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 600px) {
+            .header {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .live-market-btn {
+                bottom: 15px;
+                right: 15px;
+                font-size: 14px;
+                padding: 10px 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ================= HEADER ================= -->
+    <div class="header">
+        <div>
+            <h1>ABC Technologies Ltd.</h1>
+            <p>Shareholder Dashboard</p>
+        </div>
+        <div>
+            <p>Welcome, <strong>John Smith</strong></p>
+            <p style="font-size: 13px;">Last updated: 07 Sep 2026</p>
+        </div>
+    </div>
+
+    <!-- ================= SUMMARY CARDS ================= -->
+    <div class="cards">
+        <div class="card">
+            <h3>Total Portfolio Value</h3>
+            <div class="value">$48,750</div>
+            <div class="change positive">▲ +$1,250 (2.6%)</div>
+        </div>
+
+        <div class="card">
+            <h3>Shares Owned</h3>
+            <div class="value">1,500</div>
+            <div class="change">Ordinary Shares</div>
+        </div>
+
+        <div class="card">
+            <h3>Current Share Price</h3>
+            <div class="value">$32.50</div>
+            <div class="change positive">▲ +0.85 (2.7%)</div>
+        </div>
+
+        <div class="card">
+            <h3>Total Gain / Loss</h3>
+            <div class="value positive">+$6,250</div>
+            <div class="change">Since purchase</div>
+        </div>
+    </div>
+
+    <!-- ================= YOUR HOLDINGS ================= -->
+    <div class="section">
+        <h2>Your Holdings</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Company</th>
+                    <th>Shares</th>
+                    <th>Avg. Buy Price</th>
+                    <th>Current Price</th>
+                    <th>Market Value</th>
+                    <th>Gain/Loss</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ABC Technologies Ltd.</td>
+                    <td>1,500</td>
+                    <td>$28.33</td>
+                    <td>$32.50</td>
+                    <td>$48,750</td>
+                    <td class="positive">+$6,250 (14.7%)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================= DIVIDEND INFO ================= -->
+    <div class="section">
+        <h2>Dividend Information</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Ex-Date</th>
+                    <th>Payment Date</th>
+                    <th>Amount per Share</th>
+                    <th>Total Received</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>15 Aug 2026</td>
+                    <td>30 Aug 2026</td>
+                    <td>$0.25</td>
+                    <td>$375</td>
+                    <td class="positive">Paid</td>
+                </tr>
+                <tr>
+                    <td>15 Feb 2026</td>
+                    <td>28 Feb 2026</td>
+                    <td>$0.20</td>
+                    <td>$300</td>
+                    <td class="positive">Paid</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ================= COMPANY NEWS ================= -->
+    <div class="section">
+        <h2>Latest Company Updates</h2>
+        <ul style="padding-left: 20px; line-height: 1.8;">
+            <li><strong>05 Sep 2026</strong> – Q2 Results announced. Revenue up 12% year-on-year.</li>
+            <li><strong>20 Aug 2026</strong> – Dividend of $0.25 per share declared.</li>
+            <li><strong>10 Jul 2026</strong> – New product launch successful in European market.</li>
+        </ul>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <div class="footer">
+        This is a simple shareholder dashboard for personal use.<br>
+        Please contact the company investor relations for official statements.
+    </div>
+
+    <!-- ================= LIVE MARKET BUTTON ================= -->
+    <a href="https://sharesvalue.vercel.app/" target="_blank" class="live-market-btn">
+        <span class="live-dot"></span> Live Market
+    </a>
+
+</body>
+</html>
